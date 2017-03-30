@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var PORT = process.env.PORT || 3000;
 
 var middleware = require('./middleware.js')
 
@@ -17,8 +18,6 @@ app.get('/about', middleware.requireAuthentication, function (req, res) {
 // express static exposes a folder, __dirname gets working directory
 // exposed at root of website
 app.use(express.static(__dirname + '/public'));
-
-var PORT = 3000;
 
 // second argument calls a function when server starts up
 app.listen(PORT, function() {
